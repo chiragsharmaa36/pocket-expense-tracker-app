@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "487965946836",
+    "project_id": "pocket-expense-tracker-app",
+    "storage_bucket": "pocket-expense-tracker-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487965946836:android:84a04da994072a7461dc41",
+        "android_client_info": {
+          "package_name": "com.example.pocket_expense_tracker_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrteHZQtO-jGdXPMd34MWgI5ZY9VNk_eQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
