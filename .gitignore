@@ -11,6 +11,7 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+skills.md
 
 # IntelliJ related
 *.iml
@@ -43,3 +44,60 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# iOS/macOS specific
+**/ios/**/*.user
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*.xcworkspace/xcuserdata/
+**/ios/**/xcuserdata/
+**/ios/Pods/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/macos/Pods/
+
+# Web
+/web/build/
+
+# Linux/Windows
+/linux/build/
+/windows/build/
+
+# Build runner and generated files
+*.freezed.dart
+*.config.dart
+*.g.dart
+*.gr.dart
+.fvm/
+
+# Local files
+.env
+.env.local
+local.properties
+
+# OS specific
+Thumbs.db
+.flutter-plugins
+
+# Firebase emulator data
+.runtimeconfig.json
+firebase-debug.log
+
+# Xcode
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.xcodeproj/xcuserdata/
+
+# Android specifics
+.gradle/
+**/android/.gradle/
+**/android/captures/
+
+# IDE
+.classpath
+.factorypath
+.c9/
+*.ctags
+*.vtags

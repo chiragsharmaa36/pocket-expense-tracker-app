@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import '../../../core/location_service.dart';
 import '../../sync_station/presentation/bloc/sync_bloc.dart';
 import '../../sync_station/presentation/bloc/sync_event.dart';
 import '../data/expense.dart';
@@ -21,6 +23,27 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
 
+  Position? _currentPosition;
+
+  @override
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _preFetchLocation();
+  }
+
+  Future<void> _preFetchLocation() async {
+    try {
+      final position = await LocationService.getCurrentLocation();
+      setState(() {
+        _currentPosition = position;
+      });
+    } catch (e) {
+      print('Error fetching location: $e');
+    }
+  }
+
   void _saveExpense() {
     final newExpense = Expense()
       ..cloudId = Uuid().v4()
@@ -28,8 +51,8 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
       ..amount = double.tryParse(_amountController.text) ?? 0.0
       ..category = 'General'
       ..timestamp = DateTime.now()
-      ..latitude = 0.0
-      ..longitude = 0.0
+      ..latitude = _currentPosition?.latitude ?? 0.0
+      ..longitude = _currentPosition?.longitude ?? 0.0
       ..isSynced = false;
 
     context.read<ExpenseBloc>().add(AddExpense(newExpense));
