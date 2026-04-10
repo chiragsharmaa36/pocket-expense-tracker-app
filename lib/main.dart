@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:workmanager/workmanager.dart';
+import 'core/background_sync.dart';
 import 'core/routing/app_router.dart';
 import 'package:isar/isar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +18,26 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+  Workmanager().initialize(callbackDispatcher);
+
+  Workmanager().registerPeriodicTask(
+    "1", // A unique ID for this task
+    "com.yourdomain.pocketexpense.syncTask", // The ID we put in iOS Info.plist
+    frequency: const Duration(hours: 1), // Minimum is 15 mins on Android
+    constraints: Constraints(
+      networkType: NetworkType.connected, // Only run if internet is available!
+      requiresBatteryNotLow: true, // Don't kill the user's phone
+    ),
+  );
+
+  // // For Testing purpose
+  // Workmanager().registerOneOffTask(
+  //   "instant_recovery_sync",
+  //   "com.yourdomain.pocketexpense.syncTask",
+  //   // TEMPORARILY REMOVED CONSTRAINTS FOR EMULATOR TESTING
+  //   initialDelay: const Duration(seconds: 5),
+  // );
+
   final dir = await getApplicationDocumentsDirectory();
   final isar = await Isar.open([ExpenseSchema], directory: dir.path);
 
@@ -29,7 +51,8 @@ void main() async {
           create: (context) => ExpenseBloc(localRepository)..add(LoadLogs()),
         ),
         BlocProvider<SyncBloc>(
-          lazy: false, // Ensure SyncBloc starts immediately to monitor connectivity
+          lazy:
+              false, // Ensure SyncBloc starts immediately to monitor connectivity
           create: (context) => SyncBloc(
             localRepo: localRepository,
             cloudRepo: cloudRepository,
@@ -48,8 +71,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(theme: ThemeData.dark(), routerConfig: appRouter,
-    debugShowCheckedModeBanner: false,
+    return MaterialApp.router(
+      theme: ThemeData.dark(),
+      routerConfig: appRouter,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
