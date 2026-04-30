@@ -11,6 +11,8 @@ import 'package:go_router/go_router.dart';
 import 'bloc/expense_bloc.dart';
 import 'bloc/expense_event.dart';
 import 'bloc/expense_state.dart';
+import 'widgets/custom_text_field.dart';
+import 'widgets/custom_action_button.dart';
 
 class AddExpenseScreen extends StatefulWidget {
   const AddExpenseScreen({super.key});
@@ -26,9 +28,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   Position? _currentPosition;
 
   @override
-  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _preFetchLocation();
   }
@@ -60,7 +60,6 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // viewInsets.bottom is crucial here—it pushes the sheet up when the keyboard opens
     final bottomPadding = MediaQuery.of(context).viewInsets.bottom;
     return BlocListener<ExpenseBloc, ExpenseState>(
       listener: (context, state) {
@@ -75,37 +74,44 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
       },
       child: Padding(
         padding: EdgeInsets.only(
-            left: 16.0,
-            right: 16.0,
+            left: 20.0,
+            right: 20.0,
             top: 16.0,
-            bottom: bottomPadding + 16.0 // dynamic padding
+            bottom: bottomPadding + 32.0 // dynamic padding
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min, // Wrap content height
           children: [
-            const Text('Log Expense', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            TextField(
+            Container(
+              width: 40,
+              height: 5,
+              margin: const EdgeInsets.only(bottom: 24),
+              decoration: BoxDecoration(
+                color: const Color(0xFF3A3A3C),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            const Text('Log Expense', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
+            const SizedBox(height: 24),
+            CustomTextField(
               controller: _titleController,
-              decoration: const InputDecoration(labelText: 'What was it?'),
-              autofocus: true, // Pops the keyboard open instantly
+              placeholder: 'What was it?',
+              autofocus: true, 
             ),
             const SizedBox(height: 16),
-            TextField(
+            CustomTextField(
               controller: _amountController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Amount'),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              placeholder: 'Amount',
             ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(50)),
+            const SizedBox(height: 32),
+            CustomActionButton(
               onPressed: _saveExpense,
-              child: const Text('Save Locally'),
+              text: 'Save Locally',
             )
           ],
         ),
       ),
     );
-
-
   }
 }

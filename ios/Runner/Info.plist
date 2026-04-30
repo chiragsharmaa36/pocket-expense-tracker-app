@@ -5,15 +5,11 @@
 	<key>UIBackgroundModes</key>
 	<array>
 	  <string>location</string>
+	  <string>fetch</string>
+	  <string>processing</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to location for offline use.</string>
-	<array>
-	    <string>fetch</string>
-	</array>
-	<array>
-	    <string>processing</string>
-	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 	    <string>com.yourdomain.pocketexpense.syncTask</string>

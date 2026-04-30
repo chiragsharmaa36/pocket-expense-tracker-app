@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-import workmanager
+import workmanager_apple
 
 @main
 @objc class AppDelegate: FlutterAppDelegate, FlutterImplicitEngineDelegate {
@@ -8,7 +8,11 @@ import workmanager
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    WorkmanagerPlugin.registerTask(withIdentifier: "com.yourdomain.pocketexpense.syncTask")
+    // WorkmanagerPlugin.registerTask(withIdentifier: "com.yourdomain.pocketexpense.syncTask")
+    WorkmanagerPlugin.setPluginRegistrantCallback { registry in
+      GeneratedPluginRegistrant.register(with: registry)
+    }
+
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
