@@ -94,6 +94,7 @@ firebase-debug.log
 .gradle/
 **/android/.gradle/
 **/android/captures/
+android/key.properties
 
 # IDE
 .classpath
