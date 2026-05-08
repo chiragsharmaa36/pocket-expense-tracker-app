@@ -400,7 +400,7 @@ expenses/
 
 ---
 
-## � Releases
+## 🚀 Releases
 
 ### **Pre-Release Builds**
 - **Android APK**: Pre-release `.apk` builds are available on the [GitHub Releases](https://github.com/chiragsharmaa36/pocket-expense-tracker-app/releases/) page
@@ -409,7 +409,7 @@ expenses/
 
 ---
 
-## �💻 Installation & Setup
+## 💻 Installation & Setup
 
 ### **1. Clone Repository**
 ```bash
