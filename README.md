@@ -12,6 +12,7 @@ A powerful, feature-rich Flutter expense tracking application with cloud synchro
 - [Project Structure](#-project-structure)
 - [Firebase Configuration](#-firebase-configuration)
 - [Getting Started](#-getting-started)
+- [Releases](#-releases)
 - [Installation & Setup](#-installation--setup)
 - [Usage](#-usage)
 - [Development](#-development)
