@@ -5,6 +5,7 @@ A powerful, feature-rich Flutter expense tracking application with cloud synchro
 ## 📋 Table of Contents
 
 - [Overview](#overview)
+- [Screenshots](#screenshots)
 - [Features](#-features)
 - [User Flow](#-user-flow)
 - [Tech Stack](#-tech-stack)
@@ -33,6 +34,14 @@ A powerful, feature-rich Flutter expense tracking application with cloud synchro
 The app follows **Clean Architecture** principles and uses **BLoC pattern** for state management, ensuring maintainability, testability, and scalability.
 
 ---
+
+## Screenshots
+
+<img width="1080" height="2424" alt="image" src="https://github.com/user-attachments/assets/26a4ecba-ca68-4142-a73d-08e9670e40ae" />
+
+<img width="1080" height="2424" alt="image1" src="https://github.com/user-attachments/assets/ef942799-40c1-43da-bca1-eec8a2e419de" />
+
+<img width="1080" height="2424" alt="image2" src="https://github.com/user-attachments/assets/07d69782-17ce-4ff6-af3e-200d31e166be" />
 
 ## 🎯 Features
 
